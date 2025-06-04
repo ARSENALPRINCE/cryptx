@@ -1,0 +1,14 @@
+.Parentdiv{
+    background-color: red;
+    color: black;
+    text-align: center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.divcenter{
+    background: white;
+    width: 250px;
+    height: 250px;
+}

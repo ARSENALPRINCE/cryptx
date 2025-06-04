@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradex - Fund Wallet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f4f7f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <header class="bg-white shadow-sm py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">Tradex Fund Wallet</h1>
+            <nav>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Wallet</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Assets on Sale</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Create Offer</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Fund Wallet</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-6 flex-grow">
+        <div class="bg-white rounded-lg shadow-md p-6 max-w-md mx-auto">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Fund Your Naira Wallet</h2>
+            <p class="text-gray-600 text-center mb-6">Securely fund your wallet using Paystack.</p>
+
+            <form>
+                <div class="mb-4">
+                    <label for="amount" class="block text-gray-700 text-sm font-bold mb-2">Amount (in Naira)</label>
+                    <input type="number" id="amount" name="amount" step="0.01" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 10000.00">
+                </div>
+
+                <div class="flex items-center justify-center mt-6">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Proceed to Paystack
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+        <div class="container mx-auto text-center text-sm">
+            &copy; 2023 Tradex. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+{% extends 'user/base.html' %} 
+
+{% block title %}My Wallet - Tradex{% endblock %} {# Sets the page title #}
+
+{% block content %}
+
+
+
+    
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Available Assets for Trading</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Token X (TOK-X)</h3>
+                    <p class="text-gray-600 text-sm mb-2">Seller: @seller_user_1</p>
+                    <p class="text-gray-700 mb-2">Quantity Available: <span class="font-bold text-green-600">3.0000000000</span></p>
+                    <p class="text-gray-700 mb-4">Price per unit: <span class="font-bold text-blue-600">₦ 1,550.00</span></p>
+                </div>
+                <div class="flex justify-end">
+                    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mr-2">
+                        Instant Market
+                    </span>
+                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Buy Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Maker Protocol V (MKV-P)</h3>
+                    <p class="text-gray-600 text-sm mb-2">Seller: @seller_user_2</p>
+                    <p class="text-gray-700 mb-2">Quantity Available: <span class="font-bold text-green-600">0.5000000000</span></p>
+                    <p class="text-gray-700 mb-4">Starting Bid: <span class="font-bold text-red-600">₦ 2,000.00</span></p>
+                </div>
+                 <div class="flex justify-end items-center">
+                     <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 mr-2">
+                        Bid Market
+                    </span>
+                    <a href="#" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        View Bid
+                    </a>
+                </div>
+            </div>
+
+             <div class="bg-white rounded-lg shadow-md p-6 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Token X (TOK-X)</h3>
+                    <p class="text-gray-600 text-sm mb-2">Seller: @seller_user_3</p>
+                    <p class="text-gray-700 mb-2">Quantity Available: <span class="font-bold text-green-600">1.0000000000</span></p>
+                    <p class="text-gray-700 mb-4">Price per unit: <span class="font-bold text-blue-600">₦ 1,500.00</span></p>
+                </div>
+                <div class="flex justify-end">
+                    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-green-100 text-green-800 mr-2">
+                        Instant Market
+                    </span>
+                    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Buy Now
+                    </a>
+                </div>
+            </div>
+
+            </div>
+    
+
+
+

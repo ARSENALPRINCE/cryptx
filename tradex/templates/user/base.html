@@ -1,0 +1,44 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}   {% endblock %}
+    </title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <!-- <link rel="stylesheet" href="{% static 'css/index.css' %}"> -->
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <header class="bg-white shadow-sm py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">Tradex Buy Asset</h1>
+            <nav>
+                
+   
+                <a href="{% url 'tradex-wallet-page' %}" class="text-gray-600 hover:text-blue-600 mx-2">Wallet</a>
+                <a href="{% url 'tradex-create-wallet' %}" class="text-gray-600 hover:text-blue-600 mx-2">Create Wallet</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Assets on Sale</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Create Offer</a>
+                <a href="{% url 'tradex-fund-wallet' %}" class="text-gray-600 hover:text-blue-600 mx-2">Fund Wallet</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-6 flex-grow">
+        {% block content %} {% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+        <div class="container mx-auto text-center text-sm">
+            &copy; 2025 Tradex. All rights reserved.
+        </div>
+    </footer>
+
+
+</body>
+{% block extra_js %} {% endblock %}
+</html>

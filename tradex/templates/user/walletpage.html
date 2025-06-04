@@ -1,0 +1,98 @@
+{% extends 'user/base.html' %} 
+
+{% block title %}My Wallet - Tradex{% endblock %} {# Sets the page title #}
+
+{% block content %}
+
+    {# Display error message if any #}
+    {% if error %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-6" role="alert">
+            <strong class="font-bold">Error:</strong>
+            <span class="block sm:inline">{{ error }}</span>
+        </div>
+    {% endif %}
+
+    {% if tradxtar %} 
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">My Balances</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-md shadow-sm">
+                    <p class="text-gray-600 text-sm">Naira Balance</p>
+                    {# Display the user's balance from the tradxtar object #}
+                    <p class="text-2xl font-bold text-blue-600">₦ {{ tradxtar.balance|floatformat:2 }}</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-md shadow-sm">
+                    <p class="text-gray-600 text-sm">Total Asset Value (Est.)</p>
+                     {# Display calculated total asset value if available in context #}
+                    <p class="text-2xl font-bold text-green-600">$ {{ total_asset_value|floatformat:2|default:"0.00" }}</p> {# Use default filter if total_asset_value is not provided #}
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">My Asset Wallets</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tl-lg">
+                                Asset
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Symbol
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Quantity
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Address
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider rounded-tr-lg">
+                                Actions
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        {# Loop through the user's wallets #}
+                        {% for wallet in wallets %}
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {# Access asset details via the foreign key #}
+                                <div class="text-sm font-medium text-gray-900">{{ wallet.asset.name }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-500">{{ wallet.asset.symbol }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                {# Format quantity to 10 decimal places #}
+                                <div class="text-sm text-gray-900">{{ wallet.quantity|floatformat:10 }}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                {{ wallet.address }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
+                                {# Replace '#' with actual URLs for send/receive, passing wallet ID #}
+                                <a href='#' class="text-blue-600 hover:text-blue-900 mr-3">Send</a>
+                                <a href= "{% url 'buy-asset-page' wallet.asset.pk %}"  class="text-green-600 hover:text-green-900">Buy</a>
+                                <a href="{% url 'tradex-sell-asset-page' wallet.asset.pk %}" class="text-yellow-600 hover:text-green-900">sell</a>
+                            </td>
+                        </tr>
+                        {% empty %} {# Message if the user has no wallets #}
+                        <tr>
+                            <td colspan="5" class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                You do not have any asset wallets yet.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %} 
+
+{% endblock %} 
+
+
+{% block extra_js %}
+
+{% endblock %}

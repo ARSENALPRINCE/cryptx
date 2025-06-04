@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradex - Buy Asset</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles if needed */
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f4f7f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <header class="bg-white shadow-sm py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-800">Tradex Buy Asset</h1>
+            <nav>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Wallet</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Assets on Sale</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Create Offer</a>
+                <a href="#" class="text-gray-600 hover:text-blue-600 mx-2">Fund Wallet</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-8 px-6 flex-grow">
+        <div class="bg-white rounded-lg shadow-md p-6 max-w-lg mx-auto">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Buy Token X (TOK-X)</h2>
+
+            <div class="mb-6 border-b pb-4">
+                <p class="text-gray-600 text-sm">Asset:</p>
+                <p class="text-xl font-bold text-gray-800 mb-2">Token X (TOK-X)</p>
+                <p class="text-gray-600 text-sm">Seller:</p>
+                <p class="text-lg text-gray-800 mb-2">@seller_user_1</p>
+                <!-- <p class="text-gray-600 text-sm">Available Quantity:</p> -->
+                <!-- <p class="text-lg text-green-600 font-bold mb-2">3.0000000000</p> -->
+                 <p class="text-gray-600 text-sm">Price per unit:</p>
+                <p class="text-lg text-blue-600 font-bold">₦ {{asset.price|floatformat:3}}</p>
+            </div>
+
+
+            <form>
+                <div class="mb-4">
+                    <label for="buy-quantity" class="block text-gray-700 text-sm font-bold mb-2">Quantity to Buy</label>
+                    <input type="number" id="buy-quantity" name="buy-quantity" step="0.0000000001" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., 1.0000000000">
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-gray-700 text-sm font-bold mb-2">Estimated Total Cost:</p>
+                    <p class="text-xl font-bold text-red-600" id="estimated-cost">₦ 0.00</p>
+                </div>
+
+                <div class="flex items-center justify-center mt-6">
+                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                        Confirm Purchase
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-8">
+        <div class="container mx-auto text-center text-sm">
+            &copy; 2023 Tradex. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Basic JavaScript to calculate estimated cost (replace with dynamic updates)
+        const buyQuantityInput = document.getElementById('buy-quantity');
+        const estimatedCostElement = document.getElementById('estimated-cost');
+        const pricePerUnit = JSON.parse("{{asset.price}}"); // Get this dynamically from the asset details
+
+        buyQuantityInput.addEventListener('input', function() {
+            const quantity = parseFloat(this.value);
+            if (!isNaN(quantity) && quantity >= 0) {
+                const estimatedCost = quantity * pricePerUnit;
+                estimatedCostElement.textContent = `₦ ${estimatedCost.toFixed(2)}`;
+            } else {
+                estimatedCostElement.textContent = '₦ 0.00';
+            }
+        });
+    </script>
+
+</body>
+</html>
