@@ -32,6 +32,8 @@ def getspecificAsset(request):
             <h2>Not Found</h2>  
         """
     return HttpResponse(html)
+
+@login_required(login_url='tradex-login-page')
 def updateSpecificAsset(request):
     try:
         asset1 = Asset.objects.get(pk=1)
@@ -128,7 +130,7 @@ def loginview(request:HttpRequest):
 # @login_required(login_url='/tradex/login/')
 # def walletview(request):
     # return render(request,"user/walletpage.html",{})
-
+@login_required(login_url='tradex-login-page')
 def buyAssetview(request:HttpRequest,pk):
     try:
         asset = Asset.objects.get(pk = pk)
@@ -153,8 +155,12 @@ def buyAssetview(request:HttpRequest,pk):
         print(e)
         return render(request,"user/buyasset.html",{'error':str(e),'asset':asset})
    # return render(request,"user/buyasset.html",{})
+
+@login_required(login_url='tradex-login-page')
 def fundWalletview(request):
     return render(request,"user/fundwallet.html",{})
+
+@login_required(login_url='tradex-login-page')
 def offerview(request,pk):
     try:
         asset = Asset.objects.get(pk=pk)
@@ -184,7 +190,8 @@ def offerview(request,pk):
     
     except Exception as e :
         return render(request,"user/offerview.html",{"error": str(e)})
-@login_required
+
+@login_required(login_url='tradex-login-page')
 def myofferedAsset4sale(request):
     try:
         my_escrow_sales = Escrowsale.objects.filter(wallet_seller_holder_trader= request.user)
@@ -216,19 +223,23 @@ def otherUserAssetOffer4Sales(request):
         return redirect("tradex-wallet-page")
     except Exception as e:
         return render(request, 'user/otherAsset4Sale.html',{"error": str(e)})
-      
+
+@login_required(login_url='tradex-login-page')   
 def onSaleview(request):
     return render(request,"user/onsale.html",{})
+
+@login_required(login_url='tradex-login-page')
 def bidExchangeview(request):
     return render(request,"user/bidexchange.html",{})
-@login_required
+
+@login_required(login_url='tradex-login-page')
 def logoutview(request):
     logout(request)
     return render(request,"auth/login.html",{"success":"logout successful","error":None})
 
 
 #1st code
-@login_required 
+@login_required(login_url='tradex-login-page')
 def createWalletView(request:HttpRequest):
     """
     View to handle the creation of a new wallet for the user.
@@ -286,7 +297,7 @@ def createWalletView(request:HttpRequest):
     return render(request, "user/createWallet.html", context)
 
 
-@login_required 
+@login_required(login_url='tradex-login-page')
 def walletView(request:HttpRequest):
     """
     View to display the user's wallet information.

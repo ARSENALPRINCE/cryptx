@@ -16,6 +16,6 @@ urlpatterns = [
     path('logout/',logoutview, name='tradex-logout-page'),
     path('buy-Asset/<int:pk>',buyAssetview, name='buy-asset-page'),
     path('sell-asset/<int:pk>',offerview, name ='tradex-sell-asset-page'),
-    path('escrow')
+    #path('escrow')
  ]
 #127.0.0:1:8000/tradex/home
